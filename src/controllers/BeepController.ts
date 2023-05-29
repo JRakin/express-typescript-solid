@@ -2,11 +2,12 @@ import BaseController from "./BaseController";
 import * as express from 'express'
 import { Request, Response } from 'express'
 
-class BeepController implements BaseController {
+class BeepController extends BaseController {
     public path = '/beep'
     public router = express.Router()
 
     constructor() {
+        super()
         this.initRoutes()
     }
 
