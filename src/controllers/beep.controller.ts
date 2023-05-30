@@ -1,4 +1,4 @@
-import BaseController from "./BaseController";
+import BaseController from "./base.controller";
 import * as express from 'express'
 import { Request, Response } from 'express'
 
