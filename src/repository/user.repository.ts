@@ -1,10 +1,9 @@
-import { EntityManager } from "typeorm";
-import { User } from "../entity/user.entity";
 import { GenericRepository } from "./base.repository";
+import { User } from "@/entity/user.entity";
 
 export class UserRepository extends GenericRepository<User> {
-    constructor(entityManager: EntityManager) {
-        super(entityManager, User);
+    constructor() {
+        super(User);
     }
 
     create(entity: User): Promise<User> {

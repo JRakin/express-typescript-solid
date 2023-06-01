@@ -1,10 +1,11 @@
-import { EntityManager, FindOptionsWhere, ObjectType, Repository } from 'typeorm';
+import { AppDataSource } from '@/db/data-source';
+import {FindOptionsWhere, ObjectType, Repository } from 'typeorm';
 
 export class GenericRepository<T> {
     private repository: Repository<T>;
 
-    constructor(entityManager: EntityManager, entityClass: ObjectType<T>) {
-        this.repository = entityManager.getRepository(entityClass);
+    constructor(entityClass: ObjectType<T>) {
+        this.repository = AppDataSource.getRepository(entityClass);
     }
 
     findAll(): Promise<T[]> {

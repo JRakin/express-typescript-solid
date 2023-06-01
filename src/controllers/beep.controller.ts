@@ -1,6 +1,6 @@
-import BaseController from "./base.controller";
 import * as express from 'express'
 import { Request, Response } from 'express'
+import BaseController from './base.controller'
 
 class BeepController extends BaseController {
     public path = '/beep'

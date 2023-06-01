@@ -10,5 +10,6 @@
     "sourceMap": true
   },
   "include": ["src"],
-  "exclude": ["./coverage", "./dist", "__tests__", "jest.config.js"]
+  "exclude": ["./coverage", "./dist", "__tests__", "jest.config.js"],
+  "extends": "./tsconfig.paths.json"
 }

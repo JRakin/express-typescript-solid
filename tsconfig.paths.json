@@ -1,0 +1,14 @@
+{
+    "compilerOptions": {
+      "baseUrl": ".",
+      "paths": {
+        "@/*": ["./src/*"],
+        "@/respository/*": ["./src/respository/*"],
+        "@/entity/*": ["./src/entity/*"],
+        "@/services/*": ["./src/services/*"],
+        "@/controllers/*": ["./src/controllers/*"],
+        "@/types/*": ["./src/types/*"],
+        "@/db/*": ["./src/db/*"]
+      }
+    }
+  }

@@ -1,11 +1,10 @@
-import { UserRepository } from './../repository/user.repository';
-import { User } from "../entity/user.entity";
-import { AppDataSource } from '../db/data-source';
+import { User } from "@/entity/user.entity";
+import { UserRepository } from "@/repository/user.repository";
 
 class UserService {
     private userRepository: UserRepository
     constructor() {
-        this.userRepository = new UserRepository(AppDataSource.manager)
+        this.userRepository = new UserRepository()
     }
 
     async createUser(userData: Partial<User>): Promise<User> {
@@ -13,7 +12,6 @@ class UserService {
         Object.assign(user, userData);
         return this.userRepository.create(user);
     }
-
 
 }
 

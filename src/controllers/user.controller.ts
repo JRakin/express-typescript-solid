@@ -1,8 +1,8 @@
-import { ICreateUser, IUser } from "../interfaces/user.interface";
-import UserService from "../services/user.service";
-import { HttpStatusCode } from "../types/enums";
+import UserService from "@/services/user.service";
 import BaseController from "./base.controller";
 import * as express from "express";
+import { ICreateUser, IUser } from "@/interfaces/user.interface";
+import { HttpStatusCode } from "@/types/enums";
 
 class UserController extends BaseController {
   public path = "/user";
