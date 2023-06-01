@@ -1,11 +1,11 @@
-import { UserRepositoryImpl } from './../repository/user.repository';
+import { UserRepository } from './../repository/user.repository';
 import { User } from "../entity/user.entity";
 import { AppDataSource } from '../db/data-source';
 
 class UserService {
-    private userRepository: UserRepositoryImpl
+    private userRepository: UserRepository
     constructor() {
-        this.userRepository = new UserRepositoryImpl(AppDataSource.manager)
+        this.userRepository = new UserRepository(AppDataSource.manager)
     }
 
     async createUser(userData: Partial<User>): Promise<User> {

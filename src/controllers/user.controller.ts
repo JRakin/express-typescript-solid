@@ -1,31 +1,31 @@
+import { ICreateUser, IUser } from "../interfaces/user.interface";
 import UserService from "../services/user.service";
 import { HttpStatusCode } from "../types/enums";
 import BaseController from "./base.controller";
 import * as express from "express";
 
 class UserController extends BaseController {
-  public path = "users";
+  public path = "/user";
   public router = express.Router();
-  public userService: UserService;
+  private userService = new UserService();
 
   constructor() {
     super();
-    this.userService = new UserService();
     this.initRoutes();
   }
 
   initRoutes() {
-    this.router.post("/create", this.createUser);
+    this.router.post(this.path + "/create", this.createUser);
   }
 
   private createUser = async (
     req: express.Request,
     res: express.Response
-  ): Promise<void> => {
-    const userData = req.body;
+  ) => {
+    const userData: ICreateUser = req.body;
     try {
-      const createdUser = await this.userService.createUser(userData);
-      res.json(createdUser);
+      const createdUser: IUser = await this.userService.createUser(userData);
+      res.send(createdUser);
     } catch (error) {
       res
         .status(HttpStatusCode.BadRequest)
