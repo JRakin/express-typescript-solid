@@ -1,14 +1,19 @@
-import { Entity, Column, BaseEntity } from "typeorm"
+import { Entity, Column } from "typeorm";
+import { BaseEntity } from "./base.entity";
 
-@Entity('users')
+@Entity("users")
 export class User extends BaseEntity {
-    @Column()
-    firstName: string
+    constructor(user?: User) {
+        super();
+        Object.assign(this, user);
+    }
 
     @Column()
-    lastName: string
+    firstName: string;
 
     @Column()
-    age: number
+    lastName: string;
 
+    @Column()
+    age: number;
 }

@@ -1,18 +1,17 @@
 import { User } from "@/entity/user.entity";
-import { UserRepository } from "@/repository/user.repository";
+import { UserRepository } from "@/repositories/user.repository";
+import { BaseService } from "./base.service";
+import IUserService from "@/interfaces/user.service";
+import IUserRepository from "@/interfaces/user.repository";
+class UserService extends BaseService<User> implements IUserService {
 
-class UserService {
-    private userRepository: UserRepository
-    constructor() {
-        this.userRepository = new UserRepository()
+    constructor(private userRepo: IUserRepository) {
+        super(userRepo);
     }
 
-    async createUser(userData: Partial<User>): Promise<User> {
-        const user = new User();
-        Object.assign(user, userData);
-        return this.userRepository.create(user);
+    FindAll(): Promise<User[]> {
+        return this.repository.FindAll();
     }
-
 }
 
 export default UserService

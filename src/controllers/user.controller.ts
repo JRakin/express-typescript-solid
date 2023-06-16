@@ -1,13 +1,13 @@
 import UserService from "@/services/user.service";
 import BaseController from "./base.controller";
 import * as express from "express";
-import { ICreateUser, IUser } from "@/interfaces/user.interface";
 import { HttpStatusCode } from "@/types/enums";
+import { UserRepository } from "@/repositories/user.repository";
 
 class UserController extends BaseController {
   public path = "/user";
   public router = express.Router();
-  private userService = new UserService();
+  private userService = new UserService(new UserRepository());
 
   constructor() {
     super();
@@ -22,9 +22,9 @@ class UserController extends BaseController {
     req: express.Request,
     res: express.Response
   ) => {
-    const userData: ICreateUser = req.body;
+    const userData = req.body;
     try {
-      const createdUser: IUser = await this.userService.createUser(userData);
+      const createdUser = await this.userService.Create(userData);
       res.send(createdUser);
     } catch (error) {
       res

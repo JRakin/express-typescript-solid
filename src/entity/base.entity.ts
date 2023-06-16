@@ -1,17 +1,23 @@
 import {
     CreateDateColumn,
-    UpdateDateColumn,
-    BaseEntity,
     PrimaryGeneratedColumn,
-} from 'typeorm';
+    UpdateDateColumn,
+} from "typeorm";
 
-export default abstract class Model extends BaseEntity {
+export class BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @CreateDateColumn()
-    created_at: Date;
+    @CreateDateColumn({
+        type: "timestamp",
+        default: () => "CURRENT_TIMESTAMP(6)",
+    })
+    createdAt: Date;
 
-    @UpdateDateColumn()
-    updated_at: Date;
+    @UpdateDateColumn({
+        type: "timestamp",
+        default: () => "CURRENT_TIMESTAMP(6)",
+        onUpdate: "CURRENT_TIMESTAMP(6)",
+    })
+    updatedAt: Date;
 }
