@@ -4,4 +4,4 @@ Steps to run this project:
 
 1. Run `npm i` command
 2. Setup database settings inside `data-source.ts` file
-3. Run `npm run dev` command to run the project
+3. Use `npm run dev` command to run the project
