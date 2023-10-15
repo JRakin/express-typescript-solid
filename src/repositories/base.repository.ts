@@ -1,6 +1,6 @@
 import { AppDataSource } from '@/db/data-source';
 import { IGenericRepository } from '@/interfaces/generic.repository';
-import {EntityTarget, FindOptionsWhere, Repository } from 'typeorm';
+import { EntityTarget, FindOptionsWhere, Repository } from 'typeorm';
 
 export abstract class BaseRepository<T> implements IGenericRepository<T> {
     protected repository: Repository<T>;
@@ -9,28 +9,30 @@ export abstract class BaseRepository<T> implements IGenericRepository<T> {
         this.repository = AppDataSource.getRepository(entityClass);
     }
 
-    FindAll(): Promise<T[]> {
-        return this.repository.find();
+    async FindAll(): Promise<T[]> {
+        return await this.repository.find();
     }
 
-    FindById(id: number): Promise<T | undefined> {
-        return this.repository.findOne({where: {id: id} as unknown as FindOptionsWhere<T>});
+    async FindById(id: number): Promise<T | undefined> {
+        return await this.repository.findOne({ where: { id: id } as unknown as FindOptionsWhere<T> });
     }
 
-    Create(entity: T): Promise<T> {
-        return this.repository.save(entity);
+    async Create(entity: T): Promise<T> {
+        const createdEntity =  this.repository.create(entity);
+        return await this.repository.save(createdEntity)
     }
 
-    Update(id: number, entity: T): Promise<T> {
-        return this.repository.save(entity);
+    async Update(id: number, entity: T): Promise<T> {
+        const updatedEntity = await this.repository.update(id, entity as any);
+        return updatedEntity as T;
     }
 
-    Delete(id: number): Promise<any> {
-        return this.repository.delete(id)
+    async Delete(id: number): Promise<any> {
+        return await this.repository.delete(id)
     }
 
     protected getEntityType(): EntityTarget<T> {
         return this.entityClass;
-      }
+    }
 
 }

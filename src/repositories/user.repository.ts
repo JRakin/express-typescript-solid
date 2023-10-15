@@ -2,7 +2,7 @@ import { User } from "@/entity/user.entity";
 import { BaseRepository } from "./base.repository";
 import IUserRepository from "@/interfaces/user.repository";
 
-export class UserRepository extends BaseRepository<User> implements IUserRepository {
+class UserRepository extends BaseRepository<User> implements IUserRepository {
     constructor() {
         super(User);
     }
@@ -11,3 +11,5 @@ export class UserRepository extends BaseRepository<User> implements IUserReposit
         return
     }
 }
+
+export default UserRepository

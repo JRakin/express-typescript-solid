@@ -11,3 +11,13 @@ export enum HttpStatusCode {
     RequestTimeout = 408,
     BadGateway = 502
 }
+
+export enum UserRoles {
+    ADMIN = "admin",
+    SUPER_ADMIN = 'super_admin',
+    ADMIN_EDITOR = 'admin_editor',
+    USER = "user",
+    MERCHANT = "b2b_merchant",
+    MERCHANT_EXECUTIVE = 'merchant_executive',
+    HOTEL_MERCHANT = 'b2b_hotel_merchant'
+  }

@@ -7,9 +7,10 @@
     "outDir": "./dist",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "baseUrl": "."
   },
   "include": ["src"],
   "exclude": ["./coverage", "./dist", "__tests__", "jest.config.js"],
-  "extends": "./tsconfig.paths.json"
+  "extends": "./tsconfig.path.json"
 }

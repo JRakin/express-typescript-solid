@@ -2,7 +2,7 @@ import UserService from "@/services/user.service";
 import BaseController from "./base.controller";
 import * as express from "express";
 import { HttpStatusCode } from "@/types/enums";
-import { UserRepository } from "@/repositories/user.repository";
+import UserRepository from "@/repositories/user.repository";
 
 class UserController extends BaseController {
   public path = "/user";
